@@ -5,11 +5,11 @@ describe('TimeSpan', function() {
     describe('totalMiliseconds', function() {
         it('should return number of total miliseconds', function() {
             //Given
-            var dt1 = new Date();
-            var dt2 = new Date(dt1);
+            var now = new Date();
+            var future = new Date(now);
             //When
-            dt2.setMilliseconds(dt2.getMilliseconds()+33);
-            var diff = new TimeSpan(dt2-dt1);
+            future.setMilliseconds(future.getMilliseconds()+33);
+            var diff = new TimeSpan(future-now);
             //Then
             assert.equal(33, diff.totalMilliseconds);
         });
@@ -18,11 +18,11 @@ describe('TimeSpan', function() {
     describe('totalSeconds', function() {
         it('should return 33 seconds', function () {
             //Given
-            var dt1 = new Date();
-            var dt2 = new Date(dt1);
+            var now = new Date();
+            var future = new Date(now);
             //When
-            dt2.setSeconds(dt2.getSeconds()+33);
-            var diff = new TimeSpan(dt2-dt1);
+            future.setSeconds(future.getSeconds()+33);
+            var diff = new TimeSpan(future-now);
             //Then
             assert.equal(33, diff.totalSeconds);
         });
@@ -31,11 +31,11 @@ describe('TimeSpan', function() {
     describe('totalMinutes', function() {
         it('should return 1 minutes and 60 seconds', function () {
             //Given
-            var dt1 = new Date();
-            var dt2 = new Date(dt1);
+            var now = new Date();
+            var future = new Date(now);
             //When
-            dt2.setMinutes(dt2.getMinutes()+1);
-            var diff = new TimeSpan(dt2-dt1);
+            future.setMinutes(future.getMinutes()+1);
+            var diff = new TimeSpan(future-now);
             //Then
             assert.equal(1, diff.totalMinutes);
             assert.equal(60, diff.totalSeconds);
@@ -45,11 +45,11 @@ describe('TimeSpan', function() {
     describe('totalHour', function() {
         it('should return 2 hours and 150 minutes', function() {
             //Given
-            var dt1 = new Date();
-            var dt2 = new Date(dt1);
+            var now = new Date();
+            var future = new Date(now);
             //When
-            dt2.setMinutes(dt2.getMinutes()+150);
-            var diff = new TimeSpan(dt2-dt1);
+            future.setMinutes(future.getMinutes()+150);
+            var diff = new TimeSpan(future-now);
             //Then
             assert.equal(150, diff.totalMinutes);
             assert.equal(2, diff.totalHours);
@@ -59,11 +59,11 @@ describe('TimeSpan', function() {
     describe('totalDays', function() {
         it('should return 2 days and 48 hours', function() {
             //Given
-            var dt1 = new Date();
-            var dt2 = new Date(dt1);
+            var now = new Date();
+            var future = new Date(now);
             //When
-            dt2.setDate(dt2.getDate()+2);
-            var diff = new TimeSpan(dt2-dt1);
+            future.setDate(future.getDate()+2);
+            var diff = new TimeSpan(future-now);
             //Then
             assert.equal(2, diff.totalDays);
             assert.equal(48, diff.totalHours);
@@ -116,13 +116,13 @@ describe('TimeSpan', function() {
     describe('normal time', function() {
         it('should return number of hours, minutes and seconds', function() {
             //Given
-            var dt1 = new Date();
-            var dt2 = new Date(dt1);
+            var now = new Date();
+            var future = new Date(now);
             //When
-            dt2.setHours(dt2.getHours()+1);
-            dt2.setMinutes(dt2.getMinutes()+30);
-            dt2.setSeconds(dt2.getSeconds()+10);
-            var diff = new TimeSpan(dt2-dt1);
+            future.setHours(future.getHours()+1);
+            future.setMinutes(future.getMinutes()+30);
+            future.setSeconds(future.getSeconds()+10);
+            var diff = new TimeSpan(future-now);
             //Then
             assert.equal(0, diff.years);
             assert.equal(0, diff.months);
