@@ -11,7 +11,7 @@ describe('TimeSpan', function() {
             future.setMilliseconds(future.getMilliseconds()+33);
             var diff = new TimeSpan(future-now);
             //Then
-            assert.equal(33, diff.totalMilliseconds);
+            assert.equal(33, diff.totalMilliseconds());
         });
     });
 
@@ -24,7 +24,7 @@ describe('TimeSpan', function() {
             future.setSeconds(future.getSeconds()+33);
             var diff = new TimeSpan(future-now);
             //Then
-            assert.equal(33, diff.totalSeconds);
+            assert.equal(33, diff.totalSeconds());
         });
     });
 
@@ -37,8 +37,8 @@ describe('TimeSpan', function() {
             future.setMinutes(future.getMinutes()+1);
             var diff = new TimeSpan(future-now);
             //Then
-            assert.equal(1, diff.totalMinutes);
-            assert.equal(60, diff.totalSeconds);
+            assert.equal(1, diff.totalMinutes());
+            assert.equal(60, diff.totalSeconds());
         })
     });
 
@@ -51,8 +51,8 @@ describe('TimeSpan', function() {
             future.setMinutes(future.getMinutes()+150);
             var diff = new TimeSpan(future-now);
             //Then
-            assert.equal(150, diff.totalMinutes);
-            assert.equal(2, diff.totalHours);
+            assert.equal(150, diff.totalMinutes());
+            assert.equal(2, diff.totalHours());
         });
     });
 
@@ -65,8 +65,8 @@ describe('TimeSpan', function() {
             future.setDate(future.getDate()+2);
             var diff = new TimeSpan(future-now);
             //Then
-            assert.equal(2, diff.totalDays);
-            assert.equal(48, diff.totalHours);
+            assert.equal(2, diff.totalDays());
+            assert.equal(48, diff.totalHours());
         });
     });
 
@@ -75,7 +75,7 @@ describe('TimeSpan', function() {
             //Given
             var timeSpan = TimeSpan.fromMilliseconds(30);
             //When - Then
-            assert.equal(30, timeSpan.totalMilliseconds);
+            assert.equal(30, timeSpan.totalMilliseconds());
         });
     });
 
@@ -84,7 +84,7 @@ describe('TimeSpan', function() {
             //Given
             var timeSpan = TimeSpan.fromSeconds(30);
             //When - Then
-            assert.equal(30, timeSpan.totalSeconds);
+            assert.equal(30, timeSpan.totalSeconds());
         });
     });
 
@@ -93,14 +93,14 @@ describe('TimeSpan', function() {
             //Given
             var timeSpan = TimeSpan.fromMinutes(30);
             //When - Then
-            assert.equal(30, timeSpan.totalMinutes);
+            assert.equal(30, timeSpan.totalMinutes());
         });
 
         it('should create new timeSpan with 30 number of total seconds from 0.5 minute', function() {
             //Given
             var timeSpan = TimeSpan.fromMinutes(0.5);
             //When - Then
-            assert.equal(30, timeSpan.totalSeconds);
+            assert.equal(30, timeSpan.totalSeconds());
         })
     });
 
@@ -109,7 +109,7 @@ describe('TimeSpan', function() {
             //Given
             var timeSpan = TimeSpan.fromHours(30);
             //When - Then
-            assert.equal(30, timeSpan.totalHours);
+            assert.equal(30, timeSpan.totalHours());
         });
     });
 
@@ -124,13 +124,13 @@ describe('TimeSpan', function() {
             future.setSeconds(future.getSeconds()+10);
             var diff = new TimeSpan(future-now);
             //Then
-            assert.equal(0, diff.years);
-            assert.equal(0, diff.months);
-            assert.equal(0, diff.days);
+            assert.equal(0, diff.getYears());
+            assert.equal(0, diff.getMonths());
+            assert.equal(0, diff.getDays());
 
-            assert.equal(1, diff.hours);
-            assert.equal(30, diff.minutes);
-            assert.equal(10, diff.seconds);
+            assert.equal(1, diff.getHours());
+            assert.equal(30, diff.getMinutes());
+            assert.equal(10, diff.getSeconds());
         });
     });
 });

@@ -10,22 +10,58 @@ function div(a,b) {
 
 function TimeSpan(number) {
     this.date = new Date(number);
-
-    this.totalMilliseconds = number;
-    this.totalSeconds = div(number, second);
-    this.totalMinutes = div(number, minute);
-    this.totalHours = div(number, hour);
-    this.totalDays = div(number, day);
-
-    this.milliseconds = this.date.getMilliseconds();
-    this.seconds = this.date.getSeconds();
-    this.minutes = this.date.getMinutes();
-    this.hours = this.date.getHours()-1;
-    this.days = this.date.getDate()-1;
-    this.months = this.date.getMonth();
-    this.years = this.date.getYear()-70;
+    this.number = number;
 }
 
+TimeSpan.prototype.totalMilliseconds = function() {
+    return this.number;
+};
+
+TimeSpan.prototype.totalSeconds = function() {
+    return div(this.number, second)
+};
+
+TimeSpan.prototype.totalMinutes = function() {
+    return div(this.number, minute)
+};
+
+TimeSpan.prototype.totalHours = function() {
+    return div(this.number, hour)
+};
+
+TimeSpan.prototype.totalDays = function() {
+    return div(this.number, day)
+};
+
+TimeSpan.prototype.getMilliseconds = function() {
+    return this.date.getMilliseconds();
+};
+
+TimeSpan.prototype.getSeconds = function() {
+    return this.date.getSeconds();
+};
+
+TimeSpan.prototype.getMinutes = function() {
+    return this.date.getMinutes();
+};
+
+TimeSpan.prototype.getHours = function() {
+    return this.date.getHours()-1;
+};
+
+TimeSpan.prototype.getDays = function() {
+    return this.date.getDate()-1;
+};
+
+TimeSpan.prototype.getMonths = function() {
+    return this.date.getMonth();
+};
+
+TimeSpan.prototype.getYears = function() {
+    return this.date.getYear()-70;
+};
+
+//static factory method
 TimeSpan.fromMilliseconds = function(miliseconds) {
     return new TimeSpan(miliseconds);
 };
